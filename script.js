@@ -1,3 +1,7 @@
+const getSumBtn = document.createElement("button");
+getSumBtn.textContent = "Get Total Price";
+document.body.appendChild(getSumBtn);
+
 const getSum = () => {
   const prices = document.querySelectorAll(".prices");
 
@@ -7,19 +11,19 @@ const getSum = () => {
     total += parseFloat(price.textContent);
   });
 
-  // Remove old answer if exists
   const oldAns = document.getElementById("ans");
   if (oldAns) oldAns.remove();
 
-  // Create new row
   const table = document.querySelector("table");
   const newRow = document.createElement("tr");
 
   const newCell = document.createElement("td");
   newCell.colSpan = 2;
-  newCell.id = "ans";   // ✅ REQUIRED
+  newCell.id = "ans";
   newCell.textContent = total;
 
   newRow.appendChild(newCell);
   table.appendChild(newRow);
 };
+
+getSumBtn.addEventListener("click", getSum);
